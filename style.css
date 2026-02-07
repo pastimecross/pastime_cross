@@ -1,6 +1,6 @@
 
 /* 🌱 緑の格子背景 */
-body.home {
+body {
   background-color: #0f9d64;
   background-image:
     linear-gradient(#ffffff33 1px, transparent 1px),
@@ -10,6 +10,7 @@ body.home {
 
 /* ロゴ 左上固定 */
 .logo {
+  pointer-events: none;
   position: fixed;
   top: 12px;
   left: 20px;
@@ -63,6 +64,14 @@ html, body {
   transform: scale(1.05);
 }
 
+.vertical-buttons {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 縦中央 */
+  align-items: center;     /* 横中央 */
+  gap: 24px;              /* ボタン間隔 */
+}
 
 #calendar {
   width: 70%;
@@ -77,4 +86,98 @@ html, body {
 /* 拡大状態 */
 #calendar.big {
   max-width: 400px;
+}
+
+/* =====ハンバーガー (☰ -> ×) ===== */
+.hamburger {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+/* 3 lines */
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #ffffff;            /* 線の色（必要なら white に） */
+  border-radius: 999px;
+  transition: transform 200ms ease, top 200ms ease, opacity 200ms ease;
+}
+
+.hamburger span:nth-child(1) { top: 2px; }
+.hamburger span:nth-child(2) { top: 12px; }
+.hamburger span:nth-child(3) { top: 22px; }
+
+/* ☰ -> × */
+.hamburger.open span:nth-child(1) {
+  top: 12px;
+  transform: rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  top: 12px;
+  transform: rotate(-45deg);
+}
+
+/* ===== Right-side menu overlay (black translucent) ===== */
+/* 背景の黒透かし（画面全体） */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+  z-index: 9998;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: rgba(0,0,0,.85);
+  padding: 80px 20px;
+  transform: translateX(100%);
+  transition: .25s;
+}
+
+.menu-overlay.open .menu-panel {
+  transform: translateX(0);
+}
+
+.menu-panel a {
+  display: block;
+  color: white;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+/* メニュー内リンクの見た目（必要なら調整） */
+.menu-overlay a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+.menu-overlay a:active {
+  opacity: 0.7;
 }
