@@ -45,3 +45,18 @@ const cal = document.getElementById("calendar");
 cal.addEventListener("click", () => {
   cal.classList.toggle("big");
 });
+
+//保存処理ローカル
+document.getElementById("submit").addEventListener("click", () => {
+  const data = {
+    recent: recent.value,
+    good: good.value,
+    bad: bad.value,
+    question: question.value,
+    one: one.value,
+    date: new Date().toISOString()
+  };
+
+  localStorage.setItem("diary", JSON.stringify(data));
+  location.href = "read.html";
+});

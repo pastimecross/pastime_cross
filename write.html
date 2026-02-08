@@ -9,16 +9,40 @@
    
   </head>
 
-  <body class="diary">
+  <body class="000">
+<div class="diary-wrap">
 
- <div class="diary-buttons">
-  <a href="write.html" class="btn">
-    <img src="images/kaku.png" alt="">
-  </a>
+  <div class="diary-window">
+    <h2>今日の日記</h2>
 
-  <a href="read.html" class="btn">
-    <img src="images/miru.png" alt="">
-  </a>
+    <label>
+      最近の出来事
+      <textarea id="recent"></textarea>
+    </label>
+
+    <label>
+      GOOD NEWS
+      <textarea id="good"></textarea>
+    </label>
+
+    <label>
+      BAD NEWS
+      <textarea id="bad"></textarea>
+    </label>
+
+    <label>
+      question
+      <textarea id="question"></textarea>
+    </label>
+
+    <label class="speech">
+      一言
+      <textarea id="one"></textarea>
+    </label>
+  </div>
+
+  <button id="submit" class="send-btn">送信</button>
+
 </div>
     <!-- ハンバーガー　-->
 <button id="menu" class="hamburger">
@@ -39,6 +63,5 @@
 
   </div>
 </div>
-    <img src="images/logo.png" class="logo">
   </body>
 </html> 
